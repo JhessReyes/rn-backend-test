@@ -11,7 +11,15 @@ export class AppRouter {
     });
     // Get Teams
     router.get("/api/v1/teams", async (req, res) => {
-      const teams = await db.Team.findAll();
+      const teams = await db.Team.findAll({
+        include: [
+          {
+            model: db.TeamMember,
+            as: "members",
+            attributes: ["id", "superheroId", "superhero"],
+          },
+        ],
+      });
       return res.json({
         message: "Teams",
         teams,
@@ -69,6 +77,7 @@ export class AppRouter {
         const _superhero = await db.TeamMember.findOne({
           where: {
             superheroId,
+            teamId,
           },
         });
 
@@ -77,6 +86,7 @@ export class AppRouter {
         const _teamMember = await db.TeamMember.create({
           teamId,
           superheroId,
+          superhero,
         });
 
         const teamMember = _teamMember.toJSON();

@@ -32,6 +32,16 @@ export default (sequelize) => {
                 type: DataTypes.JSONB,
                 allowNull: false,
             },
+            createdAt: {
+                allowNull: false,
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW,
+            },
+            updatedAt: {
+                allowNull: false,
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW,
+            }
         },
         {
             sequelize,
