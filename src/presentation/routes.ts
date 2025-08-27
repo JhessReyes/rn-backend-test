@@ -11,7 +11,11 @@ export class AppRouter {
     });
     // Get Teams
     router.get("/api/v1/teams", async (req, res) => {
-      res.send("Teams");
+      const teams = await db.Team.findAll();
+      res.json({
+        message: "Teams",
+        teams,
+      });
     });
 
     // Create Team
