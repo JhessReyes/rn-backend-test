@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "public/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/index.ts"
+    }
+  ]
+}
