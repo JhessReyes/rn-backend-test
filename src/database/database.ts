@@ -8,7 +8,6 @@ interface Options {
   dbPassword: string;
   dbHost: string;
   dbPort: number;
-  dbSchema: string;
 }
 
 export class SequelizeDatabase {
@@ -21,13 +20,11 @@ export class SequelizeDatabase {
   constructor(private options: Options) {}
 
   async init() {
-    const { dbName, dbUser, dbPassword, dbHost, dbPort, dbSchema } =
-      this.options;
+    const { dbName, dbUser, dbPassword, dbHost, dbPort } = this.options;
 
     this.sequelize = new Sequelize(dbName, dbUser, dbPassword, {
       host: dbHost,
       port: dbPort,
-      schema: dbSchema,
       dialect: "postgres",
       dialectModule: pg,
       dialectOptions: {

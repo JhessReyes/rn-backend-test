@@ -1,4 +1,6 @@
-export class Favorite {
+import { Model, DataTypes } from "sequelize";
+
+export class Favorite extends Model {
     static associate(models) {
         // define association here
     }

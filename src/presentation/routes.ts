@@ -1,8 +1,9 @@
 import { Router } from "express";
 import path from "path";
+import { SequelizeDatabase } from "../database/database";
 
 export class AppRouter {
-  public static get routes() {
+  public static routes(db: SequelizeDatabase) {
     const router: Router = Router();
     router.get("/", (_req: any, res: any) => {
       const filePath = path.join(process.cwd(), "public", "page.html");
