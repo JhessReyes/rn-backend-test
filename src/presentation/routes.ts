@@ -17,6 +17,7 @@ export class AppRouter {
         teams,
       });
     });
+    
 
     // Create Team
     router.post("/api/v1/teams", async (req, res) => {
